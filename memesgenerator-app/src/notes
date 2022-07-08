@@ -1,0 +1,13 @@
+// index.js import everything 
+// app.js
+//coponents nav bar and main section
+// main section include two inputs 
+get request form "https://api.imgflip.com/get_memes"
+after meme is created it should be added to a list
+need to have a delete/edit button for memes list
+
+Nick 
+CSS
+Nav bar
+
+Shawn Main Section 
