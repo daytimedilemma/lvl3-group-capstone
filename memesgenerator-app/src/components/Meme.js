@@ -10,7 +10,7 @@ export default function Meme() {
         memeUrl: ""
     });
     const [allMemes, setAllMemes] = React.useState([]);
-
+   
     // Retrieve the meme list from the api
     React.useEffect(() => {
         axios.get("https://api.imgflip.com/get_memes")
@@ -53,6 +53,33 @@ export default function Meme() {
         })
     }
 
+   
+    //Added state for memes list - Nick
+
+    const [memesList, setMemesList] = React.useState([])
+    const memeUnorderedlist = memesList.map((name, index) =>{
+
+        const imgStyle = {
+            width: "200px",
+            height: "200px",
+        }
+
+
+        return (
+            <div key={index}>
+                <img src={name.memeUrl} style={imgStyle}/>
+                <p>{name.topText}</p>
+                <p>{name.bottomText}</p>
+                <button>Delete</button>
+            </div>
+        )
+    })
+    function addMemeList(){
+        setMemesList(prevMemeList => {
+            return [...prevMemeList, meme]
+        })
+    }
+    
     return (
         <main className="main">
             <form className="form">
