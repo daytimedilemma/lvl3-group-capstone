@@ -4,29 +4,29 @@ nav {
     height: 65px;
     font-family: "Karla", sans-serif;
     font-style: normal;
-    background: linear-gradient(90deg, #672280 1.18%, #A626D3
-    100%);
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
     color: #FFFFFF;
     padding: 20px 30px;
     width: auto;
     border-radius: 5px;
 }
 
-nav > h2 {
-    margin-right:auto;
+nav>h2 {
+    margin-right: auto;
     font-weight: 700;
     font-size: 24px;
     letter-spacing: -0.1em;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    padding: 100000px;
 }
 
-nav > h3 {
+nav>h3 {
     font-family: "inter";
     font-weight: 500;
     font-size: 15px;
 }
 
-nav > img {
+nav>img {
     height: 35px;
     border-radius: 20px;
     width: 35px;
