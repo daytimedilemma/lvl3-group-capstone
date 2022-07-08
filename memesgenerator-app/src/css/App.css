@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.main {
+    padding: 36px;
+}
+
+.form {
+    text-align: center;
+    display: grid;
+    grid-template: 40px 40px / 1fr 1fr;
+    gap: 17px
+}
+
+.form--input {
+    border-radius: 5px;
+    border: 1px solid #D5D4D8;
+    text-indent: 5px;
+}
+
+.form--submit {
+    grid-column: 1 / 3;
+    height: 40px;
+    padding-top: 6px;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 9px;
+    border: none;
+}

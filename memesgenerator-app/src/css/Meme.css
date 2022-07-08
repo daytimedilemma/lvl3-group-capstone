@@ -1,4 +1,33 @@
-.meme-image {
-    width: 200px;
-    height: 200px;
+.meme {
+    position: relative;
+}
+
+.meme--image {
+    border-radius: 3px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.meme--text {
+    position: absolute;
+    width: 80%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 15px 0;
+    padding: 0 5px;
+    font-family: impact, sans-serif;
+    font-size: 3em;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
+}
+
+.bottom {
+    bottom: 0px;
+}
+
+.top {
+    top: 0px;
 }
