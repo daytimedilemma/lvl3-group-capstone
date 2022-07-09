@@ -59,28 +59,21 @@ export default function Meme() {
     const [memesList, setMemesList] = React.useState([])
     const [isEditOn, setIsEditOn] = React.useState(false)
     const [userTopEdit, setUserTopEdit] = React.useState(memesList.topText)
-    function editHandleChange(event){
-        setUserTopEdit
-    }
+ 
     const memeUnorderedlist = memesList.map((name, index) => {
 
-        const imgStyle = {
-            width: "200px",
-            height: "200px",
-        }
-
         return (
-            <div key={index} id={index+name.topText}>
-                <img src={name.memeUrl} style={imgStyle} />
-                <p>{name.topText}</p>
-                <p>{name.bottomText}</p>
+            <div key={index} id={index+name.topText} className="meme">
+                <img className="meme--image" src={name.memeUrl} />
+                <p className="meme--text top">{name.topText}</p>
+                <p className="meme--text bottom">{name.bottomText}</p>
                 {isEditOn ?
                     <form>
                         <input 
                         value={userTopEdit} 
                         placeholder="Top Text"
                         name="userTopEdit"
-                        onChange={editHandleChange}
+                        // onChange={editHandleChange}
                         />
                         <input placeholder="Bottom Text"/>
                         <button onClick={editButton}>Submit Edit</button>
@@ -96,11 +89,14 @@ export default function Meme() {
         setIsEditOn(prevIsEditOn => !prevIsEditOn)
     }
 
-    function addMemeList() {
+    function addMemeList(event) {
+        event.preventDefault()
         setMemesList(prevMemeList => {
             return [...prevMemeList, meme]
         })
     }
+
+    
  
 
     return (
@@ -123,6 +119,7 @@ export default function Meme() {
                     onChange={handleChange}
                 />
             <button className="form--submit" onClick={setNewMemeUrl}>Get a new meme image 🖼</button>
+            <button className="form--submit" onClick={addMemeList}>Add Meme</button>
             </form>
 
             <div className="meme">
@@ -132,6 +129,10 @@ export default function Meme() {
             <h2 className="meme--text bottom">{meme.bottomText}</h2>
 
             </div>
+
+            <ol>
+               {memeUnorderedlist} 
+            </ol>
         </main>
     );
 }
