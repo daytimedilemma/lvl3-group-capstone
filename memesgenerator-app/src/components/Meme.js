@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import MemeItem from "./MemeItem";
 import "../css/Meme.css";
 
 export default function Meme() {
@@ -56,51 +57,20 @@ export default function Meme() {
     //Added state for memes list - Nick
 
     const [memesList, setMemesList] = React.useState([])
-    const [isEditOn, setIsEditOn] = React.useState(false)
-    const [userTopEdit, setUserTopEdit] = React.useState(memesList.topText)
-    function editHandleChange(event){
-        setUserTopEdit
-    }
-    const memeUnorderedlist = memesList.map((name, index) => {
-
-        const imgStyle = {
-            width: "200px",
-            height: "200px",
-        }
-
+    const memeUnorderedlist = memesList.map((meme, index) => {
         return (
-            <div key={index} id={index+name.topText}>
-                <img src={name.memeUrl} style={imgStyle} />
-                <p>{name.topText}</p>
-                <p>{name.bottomText}</p>
-                {isEditOn ?
-                    <form>
-                        <input 
-                        value={userTopEdit} 
-                        placeholder="Top Text"
-                        name="userTopEdit"
-                        onChange={editHandleChange}
-                        />
-                        <input placeholder="Bottom Text"/>
-                        <button onClick={editButton}>Submit Edit</button>
-                    </form>
-                    :
-                    <button onClick={editButton}>Edit</button>
-                }
-            </div>
-        )
+            <MemeItem
+                key={index}
+                meme={meme}
+            />
+        );
     })
-
-    function editButton(){
-        setIsEditOn(prevIsEditOn => !prevIsEditOn)
-    }
 
     function addMemeList() {
         setMemesList(prevMemeList => {
             return [...prevMemeList, meme]
         })
     }
- 
 
     return (
         <section>
@@ -130,10 +100,10 @@ export default function Meme() {
             </div>
             <ul id="memesList">
                 {memeUnorderedlist}
-               
+
             </ul>
-           
-                
+
+
         </section>
     );
 }
