@@ -44,7 +44,8 @@ export default function Meme() {
         })
     }
 
-    function setNewMemeUrl() {
+    function setNewMemeUrl(e) {
+        e.preventDefault()
         setMeme(prevMeme => {
             return {
                 prevMeme,
@@ -73,9 +74,10 @@ export default function Meme() {
     }
 
     return (
-        <section>
-            <form>
+        <main className="main">
+            <form className="form">
                 <input
+                    className="form--input"
                     type="text"
                     placeholder="Top text"
                     name="topText"
@@ -83,27 +85,26 @@ export default function Meme() {
                     onChange={handleChange}
                 />
                 <input
+                    className="form--input"
                     type="text"
                     placeholder="Bottom text"
                     name="bottomText"
                     value={meme.bottomText}
                     onChange={handleChange}
                 />
+            <button className="form--submit" onClick={setNewMemeUrl}>Get a new meme image 🖼</button>
+            <button className="form--submit" onClick={addMemeList}>Add Meme</button>
             </form>
-            <button onClick={setNewMemeUrl}>Get a random meme</button>
-            <button onClick={addMemeList}>Add Meme</button>
 
-            <div>
-                <img src={meme.memeUrl} className="meme-image" />
-                <p>{meme.topText}</p>
-                <p>{meme.bottomText}</p>
+            <div className="meme">
+              <img src={meme.memeUrl} className="meme--image" />
+              <h2 className="meme--text top">{meme.topText}</h2>
+              <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
-            <ul id="memesList">
-                {memeUnorderedlist}
 
-            </ul>
-
-
-        </section>
+            <ol>
+               {memeUnorderedlist} 
+            </ol>
+        </main>
     );
 }
