@@ -67,7 +67,8 @@ export default function Meme() {
         );
     })
 
-    function addMemeList() {
+    function addMemeList(e) {
+        e.preventDefault()
         setMemesList(prevMemeList => {
             return [...prevMemeList, meme]
         })
@@ -103,10 +104,7 @@ export default function Meme() {
             </div>
 
             <ol className="savedMeme">
-               <li className="savedMeme-image">
-                {memeUnorderedlist} 
-
-                </li>
+                {memeUnorderedlist}
             </ol>
         </main>
     );
