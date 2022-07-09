@@ -35,7 +35,7 @@ export default function MemeItem(props) {
     }
 
     return (
-        <div>
+        <div className="savedMeme">
             <img className="savedMemeImage" src={meme.memeUrl} />
             <h2 className="savedMeme-topText">{meme.topText}</h2>
             <h2 className="savedMeme-bottomText">{meme.bottomText}</h2>

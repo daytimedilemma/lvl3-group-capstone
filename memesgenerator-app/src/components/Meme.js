@@ -103,9 +103,11 @@ export default function Meme() {
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
 
+            <div className="saved">
             <ol className="savedMeme">
                 {memeUnorderedlist}
             </ol>
+            </div>
         </main>
     );
 }
