@@ -10,7 +10,7 @@ export default function Meme() {
         memeUrl: ""
     });
     const [allMemes, setAllMemes] = React.useState([]);
-   
+
     // Retrieve the meme list from the api
     React.useEffect(() => {
         axios.get("https://api.imgflip.com/get_memes")
@@ -34,7 +34,7 @@ export default function Meme() {
     }
 
     function handleChange(event) {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         setMeme(prevMeme => {
             return {
                 ...prevMeme,
@@ -53,33 +53,52 @@ export default function Meme() {
         })
     }
 
-   
+
     //Added state for memes list - Nick
 
     const [memesList, setMemesList] = React.useState([])
-    const memeUnorderedlist = memesList.map((name, index) =>{
-
-        const imgStyle = {
-            width: "200px",
-            height: "200px",
-        }
-
+    const [isEditOn, setIsEditOn] = React.useState(false)
+    const [userTopEdit, setUserTopEdit] = React.useState(memesList.topText)
+ 
+    const memeUnorderedlist = memesList.map((name, index) => {
 
         return (
-            <div key={index}>
-                <img src={name.memeUrl} style={imgStyle}/>
-                <p>{name.topText}</p>
-                <p>{name.bottomText}</p>
-                <button>Delete</button>
+            <div key={index} id={index+name.topText} className="meme">
+                <img className="meme--image" src={name.memeUrl} />
+                <p className="meme--text top">{name.topText}</p>
+                <p className="meme--text bottom">{name.bottomText}</p>
+                {isEditOn ?
+                    <form>
+                        <input 
+                        value={userTopEdit} 
+                        placeholder="Top Text"
+                        name="userTopEdit"
+                        // onChange={editHandleChange}
+                        />
+                        <input placeholder="Bottom Text"/>
+                        <button onClick={editButton}>Submit Edit</button>
+                    </form>
+                    :
+                    <button onClick={editButton}>Edit</button>
+                }
             </div>
         )
     })
-    function addMemeList(){
+
+    function editButton(){
+        setIsEditOn(prevIsEditOn => !prevIsEditOn)
+    }
+
+    function addMemeList(event) {
+        event.preventDefault()
         setMemesList(prevMemeList => {
             return [...prevMemeList, meme]
         })
     }
+
     
+ 
+
     return (
         <main className="main">
             <form className="form">
@@ -100,6 +119,7 @@ export default function Meme() {
                     onChange={handleChange}
                 />
             <button className="form--submit" onClick={setNewMemeUrl}>Get a new meme image 🖼</button>
+            <button className="form--submit" onClick={addMemeList}>Add Meme</button>
             </form>
 
             <div className="meme">
@@ -107,8 +127,15 @@ export default function Meme() {
             <img src={meme.memeUrl} className="meme--image" />
             <h2 className="meme--text top">{meme.topText}</h2>
             <h2 className="meme--text bottom">{meme.bottomText}</h2>
+
             </div>
-            
+
+            <ol className="savedMeme">
+               <li className="savedMeme-image">
+                {memeUnorderedlist} 
+
+                </li>
+            </ol>
         </main>
     );
 }

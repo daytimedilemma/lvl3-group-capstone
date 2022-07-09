@@ -31,3 +31,12 @@
 .top {
     top: 0px;
 }
+
+.savedMeme {
+    list-style: none;
+}
+
+.savedMeme-image {
+    padding-right: 10px;
+    width: 250px;
+}
