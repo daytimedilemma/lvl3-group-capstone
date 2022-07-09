@@ -107,8 +107,8 @@ export default function Meme() {
             <img src={meme.memeUrl} className="meme--image" />
             <h2 className="meme--text top">{meme.topText}</h2>
             <h2 className="meme--text bottom">{meme.bottomText}</h2>
-
             </div>
+            
         </main>
     );
 }
