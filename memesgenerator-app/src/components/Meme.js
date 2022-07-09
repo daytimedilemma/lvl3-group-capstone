@@ -10,7 +10,7 @@ export default function Meme() {
         memeUrl: ""
     });
     const [allMemes, setAllMemes] = React.useState([]);
-   
+
     // Retrieve the meme list from the api
     React.useEffect(() => {
         axios.get("https://api.imgflip.com/get_memes")
@@ -34,7 +34,7 @@ export default function Meme() {
     }
 
     function handleChange(event) {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         setMeme(prevMeme => {
             return {
                 ...prevMeme,
@@ -53,33 +53,56 @@ export default function Meme() {
         })
     }
 
-   
+
     //Added state for memes list - Nick
 
     const [memesList, setMemesList] = React.useState([])
-    const memeUnorderedlist = memesList.map((name, index) =>{
+    const [isEditOn, setIsEditOn] = React.useState(false)
+    const [userTopEdit, setUserTopEdit] = React.useState(memesList.topText)
+    function editHandleChange(event){
+        setUserTopEdit
+    }
+    const memeUnorderedlist = memesList.map((name, index) => {
 
         const imgStyle = {
             width: "200px",
             height: "200px",
         }
 
-
         return (
-            <div key={index}>
-                <img src={name.memeUrl} style={imgStyle}/>
+            <div key={index} id={index+name.topText}>
+                <img src={name.memeUrl} style={imgStyle} />
                 <p>{name.topText}</p>
                 <p>{name.bottomText}</p>
-                <button>Delete</button>
+                {isEditOn ?
+                    <form>
+                        <input 
+                        value={userTopEdit} 
+                        placeholder="Top Text"
+                        name="userTopEdit"
+                        onChange={editHandleChange}
+                        />
+                        <input placeholder="Bottom Text"/>
+                        <button onClick={editButton}>Submit Edit</button>
+                    </form>
+                    :
+                    <button onClick={editButton}>Edit</button>
+                }
             </div>
         )
     })
-    function addMemeList(){
+
+    function editButton(){
+        setIsEditOn(prevIsEditOn => !prevIsEditOn)
+    }
+
+    function addMemeList() {
         setMemesList(prevMemeList => {
             return [...prevMemeList, meme]
         })
     }
-    
+ 
+
     return (
         <main className="main">
             <form className="form">
