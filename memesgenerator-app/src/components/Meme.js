@@ -67,7 +67,8 @@ export default function Meme() {
         );
     })
 
-    function addMemeList() {
+    function addMemeList(event) {
+        event.preventDefault()
         setMemesList(prevMemeList => {
             return [...prevMemeList, meme]
         })
