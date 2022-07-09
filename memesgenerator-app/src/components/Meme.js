@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import MemeItem from "./MemeItem";
 import "../css/Meme.css";
 
 export default function Meme() {
@@ -57,47 +58,20 @@ export default function Meme() {
     //Added state for memes list - Nick
 
     const [memesList, setMemesList] = React.useState([])
-    const [isEditOn, setIsEditOn] = React.useState(false)
-    const [userTopEdit, setUserTopEdit] = React.useState(memesList.topText)
- 
-    const memeUnorderedlist = memesList.map((name, index) => {
-
+    const memeUnorderedlist = memesList.map((meme, index) => {
         return (
-            <div key={index} id={index+name.topText} className="meme">
-                <img className="meme--image" src={name.memeUrl} />
-                <p className="meme--text top">{name.topText}</p>
-                <p className="meme--text bottom">{name.bottomText}</p>
-                {isEditOn ?
-                    <form>
-                        <input 
-                        value={userTopEdit} 
-                        placeholder="Top Text"
-                        name="userTopEdit"
-                        // onChange={editHandleChange}
-                        />
-                        <input placeholder="Bottom Text"/>
-                        <button onClick={editButton}>Submit Edit</button>
-                    </form>
-                    :
-                    <button onClick={editButton}>Edit</button>
-                }
-            </div>
-        )
+            <MemeItem
+                key={index}
+                meme={meme}
+            />
+        );
     })
 
-    function editButton(){
-        setIsEditOn(prevIsEditOn => !prevIsEditOn)
-    }
-
-    function addMemeList(event) {
-        event.preventDefault()
+    function addMemeList() {
         setMemesList(prevMemeList => {
             return [...prevMemeList, meme]
         })
     }
-
-    
- 
 
     return (
         <main className="main">
@@ -123,11 +97,9 @@ export default function Meme() {
             </form>
 
             <div className="meme">
-
-            <img src={meme.memeUrl} className="meme--image" />
-            <h2 className="meme--text top">{meme.topText}</h2>
-            <h2 className="meme--text bottom">{meme.bottomText}</h2>
-
+              <img src={meme.memeUrl} className="meme--image" />
+              <h2 className="meme--text top">{meme.topText}</h2>
+              <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
 
             <ol className="savedMeme">
