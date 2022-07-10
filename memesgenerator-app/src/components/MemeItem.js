@@ -34,6 +34,10 @@ export default function MemeItem(props) {
         toggleEdit();
     }
 
+    function handleDelete() {
+        props.deleteMeme(meme);
+    }
+
     return (
         <div>
             <img className="savedMemeImage" src={meme.memeUrl} />
@@ -60,6 +64,7 @@ export default function MemeItem(props) {
                 :
                 <button className="savedMeme--editBtn" onClick={toggleEdit}>Edit</button>
             }
+            <button onClick={handleDelete}>Delete</button>
         </div>
 
     );
