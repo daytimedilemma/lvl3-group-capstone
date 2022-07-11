@@ -60,27 +60,48 @@ export default function Meme() {
 
     //Added state for memes list - Nick
 
-    const [memesList, setMemesList] = React.useState([])
-
     function addMemeList(e) {
         e.preventDefault()
         setMemesList(prevMemeList => {
             return [
                 ...prevMemeList,
-                <MemeItem
-                    key={meme.id + Math.random()}
-                    meme={meme}
-                    deleteMeme={deleteMeme}
-                />
+                meme
             ]
         })
     }
 
-    function deleteMeme(meme) {
+    const editMeme = (meme, update) => {
         setMemesList(prevMemeList => {
-            return prevMemeList.filter(cMeme => cMeme.props.meme != meme);
+            return prevMemeList.map(cMeme => {
+                if (cMeme === meme) {
+                    return {
+                        ...cMeme,
+                        ...update
+                    }
+                }
+                else
+                    return cMeme
+            })
         });
     }
+
+    function deleteMeme(meme) {
+        setMemesList(prevMemeList => {
+            return prevMemeList.filter(cMeme => cMeme != meme);
+        });
+    }
+
+    const [memesList, setMemesList] = React.useState([])
+    const memeElements = memesList.map(element => {
+        return (
+            <MemeItem
+                key={element.id + Math.random()}
+                meme={element}
+                editMeme={editMeme}
+                deleteMeme={deleteMeme}
+            />
+        );
+    })
 
     return (
         <main className="main">
@@ -112,9 +133,9 @@ export default function Meme() {
             </div>
 
             <div className="saved">
-            <ol className="savedMeme">
-                {memesList}
-            </ol>
+                <ol className="savedMeme">
+                    {memeElements}
+                </ol>
             </div>
         </main>
     );
