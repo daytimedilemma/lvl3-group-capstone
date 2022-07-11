@@ -40,7 +40,8 @@ body {
 }
 
 .savedMeme--editBtn,
-.savedMeme--submitBtn {
+.savedMeme--submitBtn,
+.savedMeme--deleteBtn {
     margin-top: 10px;
     height: 25px;
     padding-top: 2px;
@@ -53,3 +54,12 @@ body {
     border-radius: 9px;
     /* border: none; */
 }
+
+
+/* .savedMeme--editBtn {
+    margin-right: 3px;
+}
+
+.savedMeme--deleteBtn {
+    margin-right: 10px;
+} */

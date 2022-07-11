@@ -34,7 +34,8 @@ export default function MemeItem(props) {
         toggleEdit();
     }
 
-    function handleDelete() {
+    function handleDelete(e) {
+        e.preventDefault()
         props.deleteMeme(meme);
     }
 
@@ -44,7 +45,7 @@ export default function MemeItem(props) {
             <h2 className="savedMeme-topText">{meme.topText}</h2>
             <h2 className="savedMeme-bottomText">{meme.bottomText}</h2>
             {isEditOn ?
-                <form onSubmit={handleSubmit}>
+                <form className="savedMeme" onSubmit={handleSubmit}>
                     <input
                         className="savedMeme--editBox"
                         value={formInputs.topText}
@@ -64,7 +65,7 @@ export default function MemeItem(props) {
                 :
                 <button className="savedMeme--editBtn" onClick={toggleEdit}>Edit</button>
             }
-            <button onClick={handleDelete}>Delete</button>
+            <button className="savedMeme--deleteBtn" onClick={handleDelete}>Delete</button>
         </div>
 
     );

@@ -1,12 +1,16 @@
 .meme,
 .savedMeme {
     position: relative;
+    text-align: center;
 }
+
+
+/* working on whether or not the size is good or not */
 
 .meme--image,
 .savedMemeImage {
     border-radius: 3px;
-    width: 100%;
+    width: 80%;
     margin-top: 20px;
 }
 
@@ -62,11 +66,9 @@
     top: 0px;
 }
 
-
-/* 
-.saved {
-    align-items: center;
-} */
+.savedMemeForm {
+    text-align: left;
+}
 
 .savedMeme {
     list-style: none;
@@ -75,4 +77,5 @@
 .savedMemeImage {
     width: 300px;
     display: flex;
+    max-width: 100%;
 }
