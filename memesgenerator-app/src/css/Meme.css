@@ -1,14 +1,18 @@
-.meme {
+.meme,
+.savedMemeImage {
     position: relative;
 }
 
-.meme--image {
+.meme--image,
+.savedMemeImage {
     border-radius: 3px;
     width: 100%;
     margin-top: 20px;
 }
 
-.meme--text {
+.meme--text,
+.savedMeme-topText,
+.savedMeme-bottomText {
     position: absolute;
     width: 80%;
     text-align: center;
@@ -24,10 +28,21 @@
     text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
 }
 
-.bottom {
+.bottom,
+.savedMeme-bottomText {
     bottom: 0px;
 }
 
-.top {
+.top,
+.savedMeme-topText {
     top: 0px;
+}
+
+.savedMeme {
+    list-style: none;
+}
+
+.savedMemeImage {
+    width: 200px;
+    display: flex;
 }

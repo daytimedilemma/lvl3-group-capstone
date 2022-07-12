@@ -17,7 +17,8 @@ body {
     gap: 17px
 }
 
-.form--input {
+.form--input,
+.savedMeme--editBox {
     border-radius: 5px;
     border: 1px solid #D5D4D8;
     text-indent: 5px;
@@ -36,4 +37,19 @@ body {
     line-height: 24px;
     border-radius: 9px;
     border: none;
+}
+
+.savedMeme--editBtn,
+.savedMeme--submitBtn {
+    margin-top: 10px;
+    height: 25px;
+    padding-top: 2px;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    border-radius: 9px;
+    /* border: none; */
 }

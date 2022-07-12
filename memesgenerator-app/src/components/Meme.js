@@ -48,7 +48,7 @@ export default function Meme() {
         e.preventDefault()
         setMeme(prevMeme => {
             return {
-                prevMeme,
+                ...prevMeme,
                 memeUrl: `${getRandomMemeUrl()}`
             }
         })
@@ -93,18 +93,18 @@ export default function Meme() {
                     value={meme.bottomText}
                     onChange={handleChange}
                 />
-            <button className="form--submit" onClick={setNewMemeUrl}>Get a new meme image 🖼</button>
-            <button className="form--submit" onClick={addMemeList}>Add Meme</button>
+                <button className="form--submit" onClick={setNewMemeUrl}>Get a new meme image 🖼</button>
+                <button className="form--submit" onClick={addMemeList}>Add Meme</button>
             </form>
 
             <div className="meme">
-              <img src={meme.memeUrl} className="meme--image" />
-              <h2 className="meme--text top">{meme.topText}</h2>
-              <h2 className="meme--text bottom">{meme.bottomText}</h2>
+                <img src={meme.memeUrl} className="meme--image" />
+                <h2 className="meme--text top">{meme.topText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
 
-            <ol>
-               {memeUnorderedlist} 
+            <ol className="savedMeme">
+                {memeUnorderedlist}
             </ol>
         </main>
     );

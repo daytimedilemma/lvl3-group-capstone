@@ -36,27 +36,29 @@ export default function MemeItem(props) {
 
     return (
         <div>
-            <img src={meme.memeUrl} />
-            <p>{meme.topText}</p>
-            <p>{meme.bottomText}</p>
+            <img className="savedMemeImage" src={meme.memeUrl} />
+            <h2 className="savedMeme-topText">{meme.topText}</h2>
+            <h2 className="savedMeme-bottomText">{meme.bottomText}</h2>
             {isEditOn ?
                 <form onSubmit={handleSubmit}>
                     <input
+                        className="savedMeme--editBox"
                         value={formInputs.topText}
                         placeholder="Top Text"
                         name="topText"
                         onChange={handleChange}
                     />
                     <input
+                        className="savedMeme--editBox"
                         value={formInputs.bottomText}
                         placeholder="Bottom Text"
                         name="bottomText"
                         onChange={handleChange}
                     />
-                    <button type="submit">Submit Changes</button>
+                    <button className="savedMeme--submitBtn" type="submit">Submit Changes</button>
                 </form>
                 :
-                <button onClick={toggleEdit}>Edit</button>
+                <button className="savedMeme--editBtn" onClick={toggleEdit}>Edit</button>
             }
         </div>
 
