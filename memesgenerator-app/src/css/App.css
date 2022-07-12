@@ -40,7 +40,12 @@ body {
 }
 
 .savedMeme--editBtn,
+<<<<<<< HEAD
 .savedMeme--submitBtn {
+=======
+.savedMeme--submitBtn,
+.savedMeme--deleteBtn {
+>>>>>>> 3eb2a9a8daf9210aa58543b02a7828fdf530348f
     margin-top: 10px;
     height: 25px;
     padding-top: 2px;
@@ -52,4 +57,17 @@ body {
     font-size: 10px;
     border-radius: 9px;
     /* border: none; */
+<<<<<<< HEAD
 }
+=======
+}
+
+
+/* .savedMeme--editBtn {
+    margin-right: 3px;
+}
+
+.savedMeme--deleteBtn {
+    margin-right: 10px;
+} */
+>>>>>>> 3eb2a9a8daf9210aa58543b02a7828fdf530348f

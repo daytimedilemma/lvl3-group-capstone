@@ -1,12 +1,23 @@
 .meme,
+<<<<<<< HEAD
 .savedMemeImage {
+=======
+.savedMeme {
+>>>>>>> 3eb2a9a8daf9210aa58543b02a7828fdf530348f
     position: relative;
+    text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+
+/* working on whether or not the size is good or not */
+
+>>>>>>> 3eb2a9a8daf9210aa58543b02a7828fdf530348f
 .meme--image,
 .savedMemeImage {
     border-radius: 3px;
-    width: 100%;
+    width: 80%;
     margin-top: 20px;
 }
 
@@ -28,21 +39,68 @@
     text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
 }
 
+<<<<<<< HEAD
 .bottom,
 .savedMeme-bottomText {
     bottom: 0px;
 }
 
+=======
+
+/* Changes for the saved image  */
+
+.savedMeme-topText,
+.savedMeme-bottomText {
+    position: absolute;
+    width: 80%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-80%);
+    margin: 15px 0;
+    padding: 0 5px;
+    font-family: impact, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
+}
+
+
+/* -------- */
+
+.bottom {
+    bottom: 0px;
+}
+
+.savedMeme-bottomText {
+    bottom: 30px;
+}
+
+>>>>>>> 3eb2a9a8daf9210aa58543b02a7828fdf530348f
 .top,
 .savedMeme-topText {
     top: 0px;
 }
 
+<<<<<<< HEAD
+=======
+.savedMemeForm {
+    text-align: left;
+}
+
+>>>>>>> 3eb2a9a8daf9210aa58543b02a7828fdf530348f
 .savedMeme {
     list-style: none;
 }
 
 .savedMemeImage {
+<<<<<<< HEAD
     width: 200px;
     display: flex;
+=======
+    width: 300px;
+    display: flex;
+    max-width: 100%;
+>>>>>>> 3eb2a9a8daf9210aa58543b02a7828fdf530348f
 }

@@ -6,6 +6,7 @@ import "../css/Meme.css";
 export default function Meme() {
 
     const [meme, setMeme] = React.useState({
+        id: 0,
         topText: "",
         bottomText: "",
         memeUrl: ""
@@ -17,21 +18,29 @@ export default function Meme() {
         axios.get("https://api.imgflip.com/get_memes")
             .then(res => setAllMemes(() => {
                 const memes = res.data.data.memes;
+
                 // Initialize with a random meme
                 const index = Math.floor(Math.random() * memes.length);
                 setMeme(prevMeme => {
                     return {
                         ...prevMeme,
+                        id: `${memes[index].id}`,
                         memeUrl: `${memes[index].url}`
                     }
                 })
+
                 return memes;
             }))
     }, []);
 
-    function getRandomMemeUrl() {
+    function getRandomMeme() {
         const index = Math.floor(Math.random() * allMemes.length);
-        return allMemes[index].url;
+        return {
+            topText: `${meme.topText}`,
+            bottomText: `${meme.bottomText}`,
+            id: allMemes[index].id,
+            memeUrl: allMemes[index].url
+        }
     }
 
     function handleChange(event) {
@@ -39,12 +48,12 @@ export default function Meme() {
         setMeme(prevMeme => {
             return {
                 ...prevMeme,
-                [name]: value
+                [name]: value === undefined ? "" : value
             }
         })
     }
 
-    function setNewMemeUrl(e) {
+    function setNewMeme(e) {
         e.preventDefault()
         setMeme(prevMeme => {
             return {
@@ -54,15 +63,35 @@ export default function Meme() {
         })
     }
 
+    const editMeme = (meme, update) => {
+        setMemesList(prevMemeList => {
+            return prevMemeList.map(cMeme => {
+                if (cMeme === meme) {
+                    return {
+                        ...cMeme,
+                        ...update
+                    }
+                }
+                else
+                    return cMeme
+            })
+        });
+    }
 
-    //Added state for memes list - Nick
+    function deleteMeme(meme) {
+        setMemesList(prevMemeList => {
+            return prevMemeList.filter(cMeme => cMeme != meme);
+        });
+    }
 
     const [memesList, setMemesList] = React.useState([])
-    const memeUnorderedlist = memesList.map((meme, index) => {
+    const memeElements = memesList.map(element => {
         return (
             <MemeItem
-                key={index}
-                meme={meme}
+                key={element.id + Math.random()}
+                meme={element}
+                editMeme={editMeme}
+                deleteMeme={deleteMeme}
             />
         );
     })

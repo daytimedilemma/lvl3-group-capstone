@@ -2,7 +2,6 @@ import React from "react";
 
 export default function MemeItem(props) {
 
-    const [meme, setMeme] = React.useState(props.meme);
     const [isEditOn, setIsEditOn] = React.useState(false);
     const [formInputs, setFormInputs] = React.useState({
         topText: props.meme.topText,
@@ -25,13 +24,13 @@ export default function MemeItem(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        setMeme(prevMeme => {
-            return {
-                ...prevMeme,
-                ...formInputs
-            }
-        })
+        props.editMeme(props.meme, formInputs);
         toggleEdit();
+    }
+
+    function handleDelete(e) {
+        e.preventDefault()
+        props.deleteMeme(props.meme);
     }
 
     return (
@@ -40,7 +39,7 @@ export default function MemeItem(props) {
             <h2 className="savedMeme-topText">{meme.topText}</h2>
             <h2 className="savedMeme-bottomText">{meme.bottomText}</h2>
             {isEditOn ?
-                <form onSubmit={handleSubmit}>
+                <form className="savedMeme" onSubmit={handleSubmit}>
                     <input
                         className="savedMeme--editBox"
                         value={formInputs.topText}
@@ -60,6 +59,7 @@ export default function MemeItem(props) {
                 :
                 <button className="savedMeme--editBtn" onClick={toggleEdit}>Edit</button>
             }
+            <button className="savedMeme--deleteBtn" onClick={handleDelete}>Delete</button>
         </div>
 
     );
